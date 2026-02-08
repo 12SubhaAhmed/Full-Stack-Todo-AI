@@ -100,7 +100,9 @@ export function AuthContextProvider({ children }: { children: ReactNode }) {
       });
 
       if (!response.ok) {
-        throw new Error("Registration failed");
+        const errorData = await response.json();
+        const errorMessage = errorData.detail || "Registration failed";
+        throw new Error(errorMessage);
       }
 
       await login(email, password);

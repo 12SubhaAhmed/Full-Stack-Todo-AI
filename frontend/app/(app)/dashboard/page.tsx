@@ -8,6 +8,7 @@ import Header from "@/components/Header";
 import AddTaskForm from "@/components/AddTaskForm";
 import TaskList from "@/components/TaskList";
 import { Task } from "@/components/TaskList"; // Import Task type
+import ChatBot from "@/components/chatbot";
 
 export default function DashboardPage() {
   const { user, isAuthenticated, isLoading, token } = useAuth();
@@ -90,6 +91,7 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
+      <ChatBot onTaskMutation={fetchTasks} />
     </div>
   );
 }

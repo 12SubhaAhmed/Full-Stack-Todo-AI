@@ -13,7 +13,7 @@ from .database import create_db_and_tables, get_session
 from .models import User, Task
 from .dependencies import get_current_active_user
 from .auth_utils import verify_password, get_password_hash, create_access_token
-
+from .chatbot.router import router as chatbot_router
 
 # ---------------- SCHEMAS ----------------
 
@@ -62,6 +62,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.include_router(chatbot_router)
 
 
 # ---------------- ROOT ----------------
